@@ -17,9 +17,25 @@ import web3 from "../public/web3.png";
 import web4 from "../public/web4.png";
 import web5 from "../public/web5.png";
 import web6 from "../public/web6.png";
-
+import ContactPage from "./ContactPage";
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    description: ""
+  });
+
+  let name, value;
+
+  const handleInput = (e) => {
+    console.log(e);
+    name = e.target.name;
+
+    value = e.target.value;
+
+    setUser({ ...user, [name]: value });
+  };
 
   return (
     <div className={darkMode ? "dark" : ""}>
@@ -61,9 +77,15 @@ export default function Home() {
               needs. Join me down below and let's get cracking!
             </p>
             <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
-             <a href="https://twitter.com/SuhaibA53198140"> <AiFillTwitterCircle/></a>
-             <a href="https://www.linkedin.com/in/suhaibinsari/"><AiFillLinkedin /></a> 
-             <a href="https://github.com/suhaibinsari"><AiFillGithub /></a>   
+              <a href="https://twitter.com/SuhaibA53198140">
+                <AiFillTwitterCircle />
+              </a>
+              <a href="https://www.linkedin.com/in/suhaibinsari/">
+                <AiFillLinkedin />
+              </a>
+              <a href="https://github.com/suhaibinsari">
+                <AiFillGithub />
+              </a>
             </div>
             <div className="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 md:h-96 md:w-96">
               <Image src={deved} layout="fill" objectFit="cover" />
@@ -204,6 +226,109 @@ export default function Home() {
               />
             </div>
           </div>
+        </section>
+        <section >
+          <div class="text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800  flex-1">
+            <form>
+              <label class="block mb-6 ">
+                <p class="text-left text-gray-700 dark:text-white ">Your name</p>
+                <input
+                  type="text"
+                  name="name"
+                  class="
+              block
+              w-full
+              mt-1
+              border-gray-300
+              rounded-md
+              shadow-sm
+              focus:border-indigo-300
+              focus:ring
+              focus:ring-indigo-200
+              focus:ring-opacity-50 p-2
+            "
+                  placeholder="someOne"
+                  value={user.name}
+                  onChange={handleInput}
+                />
+              </label>
+              <label class="block mb-6">
+                <p class="text-left text-gray-700 dark:text-white">Email address</p>
+                <input
+                  name="email"
+                  type="email"
+                  class="
+              block
+              w-full
+              mt-1
+              border-gray-300
+              rounded-md
+              shadow-sm
+              focus:border-indigo-300
+              focus:ring
+              focus:ring-indigo-200
+              focus:ring-opacity-50 p-2
+            "
+                  placeholder="someone@example.com"
+                  value={user.email}
+                  onChange={handleInput}
+                  required
+                />
+              </label>
+              <label class="block mb-6">
+                <p class="text-left text-gray-700 dark:text-white">Message</p>
+                <textarea
+                  name="message"
+                  class="
+              block
+              w-full
+              mt-1
+              border-gray-300
+              rounded-md
+              shadow-sm
+              focus:border-indigo-300
+              focus:ring
+              focus:ring-indigo-200
+              focus:ring-opacity-50 p-2
+            "
+                  rows="3"
+                  placeholder="Tell me what you're thinking about..."
+                  value={user.description}
+                  onChange={handleInput}
+                ></textarea>
+              </label>
+              <div class="mb-6">
+                <button
+                  type="submit"
+                  class="
+              h-10
+              px-5
+              text-indigo-100
+              bg-indigo-700
+              rounded-lg
+              transition-colors
+              duration-150
+              focus:shadow-outline
+              hover:bg-indigo-800 
+            "
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+        <section>
+          <footer class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+              © 2022 Made with ❤️
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+              <li>
+                <a href="#" class="hover:underline"></a>
+              </li>
+            </ul>
+          </footer>
         </section>
       </main>
     </div>
